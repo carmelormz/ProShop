@@ -33,6 +33,22 @@ const Header = () => {
     );
   };
 
+  const displayAdminDropdown = () => {
+    return (
+      <NavDropdown title="Admin" id="adminmenu">
+        <LinkContainer to="/admin/userlist">
+          <NavDropdown.Item>Users</NavDropdown.Item>
+        </LinkContainer>
+        <LinkContainer to="/admin/productList">
+          <NavDropdown.Item>Products</NavDropdown.Item>
+        </LinkContainer>
+        <LinkContainer to="/admin/orderList">
+          <NavDropdown.Item>Orders</NavDropdown.Item>
+        </LinkContainer>
+      </NavDropdown>
+    );
+  };
+
   return (
     <header>
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
@@ -48,6 +64,7 @@ const Header = () => {
                   <i className="fas fa-shopping-cart"></i> Cart
                 </Nav.Link>
               </LinkContainer>
+              {userInfo && userInfo.isAdmin && displayAdminDropdown()}
               {userInfo ? displayUserProfileNav() : displayUserLoginNav()}
             </Nav>
           </Navbar.Collapse>
